@@ -1,0 +1,53 @@
+name: Renovate
+
+on:
+  schedule:
+    # random-ish time past the hour
+    # the intent here is to avoid GHA busy times
+    - cron: 52 * * * *
+
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: Debug logging
+        required: true
+        type: boolean
+        default: false
+
+      dryRun:
+        description: Dry run
+        required: true
+        type: boolean
+        default: false
+
+      repositoryFilter:
+        description: Repository filter (regex or glob, comma-separated)
+        required: false
+        type: string
+        default: ""
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    name: Renovate
+
+    steps:
+      - name: Obtain token
+        id: token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.RENOVATE_APP_ID }}
+          private_key: ${{ secrets.RENOVATE_APP_PK }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Renovate
+        uses: renovatebot/github-action@v39.0.5
+        with:
+          configurationFile: .github/renovate.json
+          token: ${{ steps.token.outputs.token }}
+        env:
+          LOG_LEVEL: ${{ github.event.inputs.debug == 'true' && 'debug' || 'info' }}
+          RENOVATE_AUTODISCOVER_FILTER: ${{ github.event.inputs.repositoryFilter || '' }}
+          RENOVATE_DRY_RUN: ${{ github.event.inputs.dryRun == 'true' && 'full' || '' }}

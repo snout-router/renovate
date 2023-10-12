@@ -1,0 +1,96 @@
+{
+  "description": "Default Renovate config preset",
+
+  "extends": [
+    ":dependencyDashboard",
+    ":ignoreModulesAndTests",
+    "group:monorepos",
+    "group:recommended",
+    "replacements:all",
+    "workarounds:all"
+  ],
+
+  "configMigration": true,
+  "labels": ["renovate"],
+  "pinDigests": false,
+  "platformCommit": true,
+  "postUpdateOptions": ["npmDedupe"],
+  "reviewers": ["team:renovate-reviewers"],
+
+  "packageRules": [
+    {
+      "description": "Allow unstable updates to 0.x versions, so long as they are not SemVer pre-release versions",
+      "matchCurrentVersion": "/^v?0\\./",
+
+      "allowedVersions": "/^v?(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)(?:\\+(?:[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$/",
+      "ignoreUnstable": false
+    },
+
+    {
+      "description": "Major releases",
+      "matchUpdateTypes": ["major"],
+
+      "addLabels": ["major"],
+
+      "minimumReleaseAge": "1 week"
+    },
+    {
+      "description": "Non-major releases",
+      "matchUpdateTypes": ["minor", "patch"],
+
+      "addLabels": ["non-major"],
+
+      "automergeType": "branch"
+    },
+
+    {
+      "description": "Docker",
+      "matchManagers": ["docker-compose", "dockerfile"],
+
+      "addLabels": ["docker"]
+    },
+
+    {
+      "description": "GitHub Actions",
+      "matchManagers": ["github-actions"],
+
+      "addLabels": ["github-actions"]
+    },
+
+    {
+      "description": "NPM",
+      "matchManagers": ["npm"],
+
+      "addLabels": ["npm"],
+
+      "minimumReleaseAge": "1 week"
+    },
+    {
+      "description": "NPM (non-dev)",
+      "matchManagers": ["npm"],
+      "matchDepTypes": [
+        "dependencies",
+        "peerDependencies",
+        "optionalDependencies"
+      ],
+
+      "addLabels": ["non-dev"]
+    },
+    {
+      "description": "NPM (dev)",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+
+      "addLabels": ["dev"],
+
+      "automerge": true
+    },
+
+    {
+      "description": "Terraform",
+      "matchManagers": ["terraform"],
+
+      "addLabels": ["terraform"]
+    }
+  ]
+}
