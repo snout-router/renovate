@@ -62,7 +62,9 @@
       "matchPackageNames": ["renovatebot/github-action"],
 
       "automerge": true,
-      "automergeType": "branch"
+      "automergeType": "branch",
+      "ignoreTests": true,
+      "minimumReleaseAge": null
     },
 
     {
