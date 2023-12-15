@@ -56,6 +56,14 @@
 
       "addLabels": ["github-actions"]
     },
+    {
+      "description": "GitHub Actions (Renovate action)",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["renovatebot/github-action"],
+
+      "automerge": true,
+      "automergeType": "branch"
+    },
 
     {
       "description": "NPM",
