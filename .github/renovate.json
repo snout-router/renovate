@@ -1,9 +1,4 @@
 {
-  "extends": ["github>snout-router/renovate"],
-
-  "allowedPostUpgradeCommands": ["^npm run renovate-post-upgrade$"],
-  "autodiscover": true,
-  "gitAuthor": "Snout Router Renovate <147721784+snout-router-renovate[bot]@users.noreply.github.com>",
-  "onboarding": false,
-  "username": "snout-router-renovate[bot]"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>snout-router/renovate"]
 }

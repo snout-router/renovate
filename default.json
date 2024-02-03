@@ -1,4 +1,6 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
   "description": "Default Renovate config preset",
 
   "extends": [
@@ -11,6 +13,7 @@
   ],
 
   "configMigration": true,
+  "gitAuthor": "Snout Router Renovate <147721784+snout-router-renovate[bot]@users.noreply.github.com>",
   "labels": ["renovate"],
   "pinDigests": false,
   "platformCommit": true,
