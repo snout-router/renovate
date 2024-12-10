@@ -16,7 +16,7 @@
   "gitAuthor": "Snout Router Renovate <147721784+snout-router-renovate[bot]@users.noreply.github.com>",
   "labels": ["renovate"],
   "pinDigests": false,
-  "platformCommit": true,
+  "platformCommit": "enabled",
   "postUpdateOptions": ["npmDedupe"],
   "reviewers": ["team:renovate-reviewers"],
 
