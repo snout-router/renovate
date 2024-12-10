@@ -19,6 +19,7 @@
   "platformCommit": "enabled",
   "postUpdateOptions": ["npmDedupe"],
   "reviewers": ["team:renovate-reviewers"],
+  "stopUpdatingLabel": "blocked",
 
   "packageRules": [
     {
