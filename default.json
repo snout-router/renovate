@@ -72,6 +72,15 @@
     },
 
     {
+      "description": "Node.js",
+      "matchPackageNames": ["node"],
+
+      "groupName": "Node.js",
+      "ignoreUnstable": false,
+      "minimumReleaseAge": "1 week"
+    },
+
+    {
       "description": "NPM",
       "matchManagers": ["npm"],
 
